@@ -52,6 +52,13 @@ def set_country_to_pop():
                Pop 01Jul2017 column
             2. The % decrease as a number
     """
+    countries = country_pop.split('\n') 
+    for country in countries[1:]:
+        country_attributes = country.split('\t')
+        name = country_attributes[1] #key
+        pop_2017 = conv_num_with_commas(country_attributes[5])
+        pop_change = float(country_attributes[6].replace("%", ''))
+        country_to_pop[name] = (pop_2017, pop_change)
 
 
 def get_population(country_name):
