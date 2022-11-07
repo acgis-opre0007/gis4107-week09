@@ -9,6 +9,9 @@
 # Last update: 31/10/2022
 # ------------------------------------------------------------------------------
 
+
+
+
 def get_missing_keys(dict_ref, dict_to_compare):
     """Returns a list of missing keys.
        dict_to_compare is the dict that may have missing keys
@@ -16,6 +19,20 @@ def get_missing_keys(dict_ref, dict_to_compare):
        Example:  dict_ref = {1:1, 2:2, 3:3}, dict_to_compare = {2:2}
                  returns [1, 3]
     """
+    dict_ref = {1:1, 2:2, 3:3}
+    dict_to_compare = {2:2}
+
+    res = []
+
+
+    for key in dict_ref:
+        if key not in dict_to_compare:
+            res.append(key)
+    return res 
+
+       
+                        
+ 
 
 
 def get_missing_keys_with_count(dict_ref, dict_to_compare):
