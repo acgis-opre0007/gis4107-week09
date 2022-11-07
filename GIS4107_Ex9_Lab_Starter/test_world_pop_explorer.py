@@ -35,7 +35,7 @@ def test_set_country_to_pop():
 
 def test_get_population_reunion():
     expected = 876562
-    wpe.country_to_pop()
+    wpe.set_country_to_pop()
     actual = wpe.country_to_pop["Réunion"][0]
     assert expected == actual
 
