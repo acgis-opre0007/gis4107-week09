@@ -44,13 +44,12 @@ def get_top_five_countries():
     return top
     # d = dict.fromkeys
 
-
 def set_country_to_pop():
     """Sets the global country_to_pop dictionary where key is country name
          and value is a tuple containing two elements:
             1. A numeric version of the comma separated number in the
                Pop 01Jul2017 column
-            2. The % decrease as a number
+            2. The % change as a number
     """
     countries = country_pop.split('\n') 
     for country in countries[1:]:
@@ -67,13 +66,15 @@ def get_population():
        from country_to_pop.  If the country_to_pop is
        empty (i.e. no keys or values), then run set_country_to_pop
        to initialize it."""
-    
     set_country_to_pop()
-
-    return ('Pop 01Jul2017')
-    
-    
-        
+    countries = country_pop.split('\n') 
+    for country in countries[1:]:
+        country_attributes = country.split('\t')
+        name = str(country_attributes[1]) #key
+        pop_2017 = conv_num_with_commas(country_attributes[5])
+        country_to_pop[name] = (name, pop_2017) 
+        population = country_to_pop[name]
+    return population
 
 def get_continents():
     """Return the list of continents"""
@@ -92,8 +93,7 @@ def get_continents():
     continents = list(unique_cont)
     sorting = sorted(continents)
     return (sorting)
-    
-    
+
 
 def get_continent_populations():
     """Returns a dict where the key is the name of the continent and
