@@ -68,7 +68,7 @@ def get_unique(in_list):
 
 
     for key in unique_numbers: 
-            res.append(key)
+        res.append(key)
     return res 
 
 
@@ -84,14 +84,20 @@ def flatten_list(in_list):
     For example, if in_list = [1, (2,3), [4,5]], 
     the returned list would be [1, 2, 3, 4, 5]
     """
-    in_list = [1, (2,3), [4,5]], 
+    in_list = [1, (2,3), [4,5]] 
 
     res = []
 
-    for res in in_list:
-        new_tup_lst = []
-        for tup in res:
-            if tup[0] not in new_tup_lst:
-                new_tup_lst.append(tup)
-            in_list.append(new_tup_lst)
-            return in_list
+    for item in in_list:
+        if str(type(item)) == "<class 'tuple'>": 
+            for i in item:
+                p = int(i)
+                res.append(p)
+        elif str(type(item)) == "<class 'list'>":
+            for i in item: 
+                res.append(i)
+        else: 
+            res.append(item)
+    return res 
+  
+
