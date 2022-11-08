@@ -98,6 +98,52 @@ def get_continents():
 def get_continent_populations():
     """Returns a dict where the key is the name of the continent and
        the value is the total population of all countries on that continent"""
+    def get_continents():
+    """Return the list of continents"""
+    country_row = country_pop.split('\n') #every country on a line
+    
+    continent_list = []
+    
+    for row in country_row:
+        row_split = row.split('\t')
+        continent = row_split[2]
+        continent_list.append(continent)
+        
+    pop_cont_list = continent_list[1:]
+
+    unique_cont = set(pop_cont_list)
+    continents = list(unique_cont)
+    sorting = sorted(continents)
+    return (sorting)
+
+
+def get_continent_populations():
+    """Returns a dict where the key is the name of the continent and
+       the value is the total population of all countries on that continent"""
+    get_continents()
     countries = country_pop.split('\n') #every country on a line
-    count = len(countries)
-    return count - 1
+    continent_list = []
+    continent_population = []
+    for row in countries:
+        row_split = row.split('\t')
+        continent = row_split[2]
+        continent_list.append(continent)
+        pop_2017 = str(conv_num_with_commas(row_split[5]))
+    pop_cont_list = continent_list[1:]
+    unique_cont = set(pop_cont_list)
+    continents = list(unique_cont)
+    sorting = sorted(continents)
+    continent_single = sorting.split()
+    for population in population_values[1:]:
+        population_values = pop_2017.split() #population split into strings
+        population = int(population_values)
+        continent_population += population
+        return continent_population
+    d = {continent_single:continent_population}
+
+get_continent_populations()
+
+         #continents split into strings, ex. 'Asia'
+            # country_to_pop[continent] = (continent_population) 
+            # population = country_to_pop[continent]
+            # return population
